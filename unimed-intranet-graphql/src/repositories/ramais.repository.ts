@@ -16,8 +16,8 @@ export class RamalRepository {
         try {
             
             const response = await this.httpService.get(process.env.BASE_API_INTRANET + `v1/Ramais`,{...this.options, params }).toPromise()
-
             return response.data
+
         } catch (error) {
             return this.apiService.Tratar_Erro(error?.response);
         }

@@ -15,8 +15,7 @@ export class RamalParams {
     page: number
 
     @Field({ nullable: true }) 
-    cd_Origem: number
-    
+    cd_Origem?: number
     
 }
 

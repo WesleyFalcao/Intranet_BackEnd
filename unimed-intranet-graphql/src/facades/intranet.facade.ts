@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Options } from "src/models/general/options.model";
 import { PaginatedSearchParam } from "src/models/general/pagianated.model";
+import { RamalParams } from "src/models/ramais/ramal.params";
 import { DepartamentosRepository } from "src/repositories/departamentos.repository";
 import { DocumentosRepository } from "src/repositories/documentos.repository";
 import { GruposceqRepository } from "src/repositories/grupos_ceq.repository";
@@ -36,7 +37,7 @@ export class IntranetFacade {
     }
 
     Get_Processos = () => this.processoRepository.Get_Processos()
-    Get_Ramais = (params: PaginatedSearchParam) => this.ramalRepository.Get_Ramais(params)
+    Get_Ramais = (params: RamalParams) => this.ramalRepository.Get_Ramais(params)
     Get_Grupos_CEQ = () => this.grupoceqRepository.Get_Grupos_CEQ()
     Get_Documentos = () => this.documentoRepository.Get_Documentos()
     Get_Departamentos = () => this.departamentoRepository.Get_Departamentos()
