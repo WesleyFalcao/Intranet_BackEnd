@@ -9,13 +9,15 @@ export class RamalParams {
     nm_Search: string
 
     @Field({ nullable: true }) 
-    pageLength: number
+    nr_Page_Length: number
 
     @Field({ nullable: true }) 
-    page: number
+    nr_Page: number
 
     @Field({ nullable: true }) 
     cd_Origem?: number
     
+    @Field({ nullable: true})
+    nm_Inicial_Selecionada: string
 }
 
