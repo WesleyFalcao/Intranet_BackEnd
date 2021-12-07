@@ -1,22 +1,22 @@
 
 import { UseGuards } from "@nestjs/common";
-import { Query, Resolver } from "@nestjs/graphql";
+import { Args, Query, Resolver } from "@nestjs/graphql";
 import { JwtAuthGuard } from "src/guards/jwt-auth.guard";
 import { Fila, RespostaFilas } from "src/models/filas/fila.model";
-import { Gruposceq } from "src/models/gruposceq/grupoceq.model";
+import { Gruposceq } from "src/models/gruposceq/grupo-ceq.model";
+import { GruposceqParams } from "src/models/gruposceq/grupo-ceq.params";
 import { Ramal } from "src/models/ramais/ramal.model";
 import { GrupoceqService } from "src/services/grupos_ceq.service";
 
 //@UseGuards(JwtAuthGuard)
 @Resolver(of => Gruposceq)
-
 export class GrupoceqResolver {
 
     constructor(private gruposceqService: GrupoceqService) { }
 
-    @Query(returns => [Gruposceq])
-    async Grupoceq() 
+    @Query(returns => [Gruposceq],{nullable: true})
+    async grupoceq(@Args('objParam', {nullable: true})objParam: GruposceqParams) 
     {
-        return this.gruposceqService.Get_Grupos_CEQ();
+        return this.gruposceqService.Get_Grupos_CEQ(objParam);
     }
 }

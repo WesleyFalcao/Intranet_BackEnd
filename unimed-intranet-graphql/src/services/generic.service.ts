@@ -14,7 +14,7 @@ export class ApiGenericService {
                     throw new HttpException(new Resposta().Tratar_Erro("Rota não autorizada para o usuário", 401) as any, HttpStatus.UNAUTHORIZED);
                 case 400:
                     if (error.data.statusCode == 200) {
-                        return error.data
+                        throw new HttpException(error.data, HttpStatus.BAD_REQUEST);
                     } else if (error.data.error == 'invalid_grant') {
                         return { data: null, motivos_Critica: [{ propriedade: "", criticas: [error.data.error_description] }], status: false, statusCode: 400 }
                     } else {
@@ -22,7 +22,7 @@ export class ApiGenericService {
                     }
                 default:
                     if (error.data) {
-                        throw error
+                        throw new HttpException(error.data, HttpStatus.INTERNAL_SERVER_ERROR)
                     } else {
                         throw new HttpException(new Resposta().Tratar_Erro("Ocorreu um erro inesperado na Api. ERR:" + error.message) as any, HttpStatus.INTERNAL_SERVER_ERROR);
                     }

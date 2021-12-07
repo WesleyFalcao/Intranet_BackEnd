@@ -6,15 +6,13 @@ import { RespostaQueryArray } from "../resposta.entity";
 export class PaginatedSearchParam {
 
     @Field({ nullable: true })
-    nm_Search: string
+    nr_Page: number
 
-    @Field({ nullable: true }) 
+    @Field({ nullable: true })
     nr_Page_Length: number
 
-    @Field({ nullable: true }) 
-    nr_Page: number
+    @Field({ nullable: true })
+    nm_Search: string
     
-    @Field({ nullable: true})
-    nm_Inicial_Selecionada: string
 }
 

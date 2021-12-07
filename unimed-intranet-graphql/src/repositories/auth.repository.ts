@@ -17,7 +17,7 @@ export class AuthRepository {
 
             return response.data
         } catch (error) {
-            return this.apiService.Tratar_Erro(error?.response);
+            throw this.apiService.Tratar_Erro(error?.response);
         }
     }
 }

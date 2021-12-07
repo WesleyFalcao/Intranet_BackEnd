@@ -92,10 +92,9 @@ export class Resposta<T>{
     statusCode: number = 200
 
     Tratar_Erro(mensagem: string, statusCode: number = 500) {
+
         this.statusCode = statusCode
-
         this.motivos_Critica.push({ propriedade: "", criticas: [mensagem] })
-
         return this
     }
 }

@@ -18,7 +18,5 @@ export class Ramal {
 
     @Field({ nullable: true })
     nm_Departamento: string
-
-    
-    
+ 
 }

@@ -1,10 +1,12 @@
 import { Injectable } from "@nestjs/common";
+import { DocumentosParams } from "src/models/documentos/documentos.params";
 import { Options } from "src/models/general/options.model";
-import { PaginatedSearchParam } from "src/models/general/pagianated.model";
+import { GruposceqParams } from "src/models/gruposceq/grupo-ceq.params";
+import { ProcessoParams } from "src/models/processos/processo.params";
 import { RamalParams } from "src/models/ramais/ramal.params";
 import { DepartamentosRepository } from "src/repositories/departamentos.repository";
 import { DocumentosRepository } from "src/repositories/documentos.repository";
-import { GruposceqRepository } from "src/repositories/grupos_ceq.repository";
+import { GruposceqRepository } from "src/repositories/grupos-ceq.repository";
 import { ProcessoRepository } from "src/repositories/processos.repository";
 import { RamalRepository } from "src/repositories/ramais.repository";
 
@@ -26,7 +28,7 @@ export class IntranetFacade {
         private ramalRepository: RamalRepository,
         private grupoceqRepository: GruposceqRepository,
         private documentoRepository: DocumentosRepository,
-        private departamentoRepository: DepartamentosRepository,
+        private departamentoRepository: DepartamentosRepository, 
 
     ){       
         this.processoRepository.options = this.options
@@ -36,10 +38,11 @@ export class IntranetFacade {
         this.departamentoRepository.options = this.options
     }
 
-    Get_Processos = () => this.processoRepository.Get_Processos()
+    Get_Processos = (params: ProcessoParams) => this.processoRepository.Get_Processos(params)
     Get_Ramais = (params: RamalParams) => this.ramalRepository.Get_Ramais(params)
-    Get_Grupos_CEQ = () => this.grupoceqRepository.Get_Grupos_CEQ()
-    Get_Documentos = () => this.documentoRepository.Get_Documentos()
+    Get_Grupos_CEQ = (params: GruposceqParams) => this.grupoceqRepository.Get_Grupos_CEQ(params)
+    Get_Documentos = (params: DocumentosParams) => this.documentoRepository.Get_Documentos(params)
     Get_Departamentos = () => this.departamentoRepository.Get_Departamentos()
-   // Set_Enviar_Mensagem_Medico = (params: MensagemInput) => this.mensagensRepository.Set_Enviar_Mensagem_Medico(params)
+    Get_Download_Documento = (cd_Documento: number) => this.documentoRepository.Get_Download_Documento(cd_Documento)
+    Get_Documento = (cd_Documento: number) => this.documentoRepository.Get_Documento(cd_Documento)
 }

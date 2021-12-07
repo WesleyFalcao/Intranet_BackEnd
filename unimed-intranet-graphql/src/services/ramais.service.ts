@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { IntranetFacade } from "../facades/intranet.facade";
 import { Resposta } from "src/models/resposta.entity";
-import { PaginatedSearchParam } from "src/models/general/pagianated.model";
+import { RamalParams } from "src/models/ramais/ramal.params";
 
 @Injectable()
 export class RamalService {
@@ -9,7 +9,7 @@ export class RamalService {
         private ramalFacade: IntranetFacade,
     ) { }
 
-    async Get_Ramais(params: PaginatedSearchParam) {
+    async Get_Ramais(params: RamalParams) {
         let resposta = new Resposta<any>()
 
         const response = await this.ramalFacade.Get_Ramais(params);

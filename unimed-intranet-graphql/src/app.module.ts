@@ -4,17 +4,18 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { GraphQLError } from 'graphql';
+import { DocumentosController } from './controller/documentos.controller';
 import { IntranetFacade } from './facades/intranet.facade';
 import { AuthRepository } from './repositories/auth.repository';
 import { DepartamentosRepository } from './repositories/departamentos.repository';
 import { DocumentosRepository } from './repositories/documentos.repository';
-import { GruposceqRepository } from './repositories/grupos_ceq.repository';
+import { GruposceqRepository } from './repositories/grupos-ceq.repository';
 import { ProcessoRepository } from './repositories/processos.repository';
 import { RamalRepository } from './repositories/ramais.repository';
 import { AuthResolver } from './resolvers/auth.resolver';
 import { DepartamentoResolver } from './resolvers/departamentos.resolver';
 import { DocumentoResolver } from './resolvers/documentos.resolver';
-import { GrupoceqResolver } from './resolvers/grupos_ceq';
+import { GrupoceqResolver } from './resolvers/grupos-ceq.resolver';
 import { ProcessoResolver } from './resolvers/processos.resolver';
 import { RamalResolver } from './resolvers/ramais.resolver';
 import { AuthService } from './services/auth.service';
@@ -24,6 +25,7 @@ import { ApiGenericService } from './services/generic.service';
 import { GrupoceqService } from './services/grupos_ceq.service';
 import { ProcessoService } from './services/processos.service';
 import { RamalService } from './services/ramais.service';
+import { FileTokenService } from './services/token.service';
 
 @Module({
     imports: [
@@ -42,14 +44,15 @@ import { RamalService } from './services/ramais.service';
             context: ({ req, res }) => ({ req, res }),
             rootValue: ({ req, res }) => ({ req, res }),
             formatError: (error) => {
+                console.log(error)
                 return new GraphQLError(
-                    error.extensions?.exception?.response?.motivos_Critica?.find(element => !element.propriedade)?.criticas?.join("\n") ?? error.message,
+                    error.extensions?.response?.motivos_Critica?.find(element => !element.propriedade)?.criticas?.join("\n") ?? error.message,
                     undefined,
                     undefined,
                     undefined,
                     error.path,
                     undefined,
-                    { motivos_Critica: error.extensions?.exception?.response?.motivos_Critica, statusCode: error.extensions?.exception?.status }
+                    { motivos_Critica: error.extensions?.response?.motivos_Critica, statusCode: error.extensions?.response.statusCode }
                 )
             }
         }),
@@ -61,7 +64,9 @@ import { RamalService } from './services/ramais.service';
         }),
         PassportModule.register({ defaultStrategy: 'jwt' }),
     ],
-    controllers: [],
+    controllers: [
+        DocumentosController
+    ],
     providers: [
         ApiGenericService,
         RamalService,
@@ -83,7 +88,7 @@ import { RamalService } from './services/ramais.service';
         GruposceqRepository,
         GrupoceqResolver,
         GrupoceqService,
-        
+        FileTokenService
     ],
 })
 export class AppModule { }

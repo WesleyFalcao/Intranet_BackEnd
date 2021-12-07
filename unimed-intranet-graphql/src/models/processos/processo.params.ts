@@ -4,12 +4,8 @@ import { RespostaQueryArray } from "../resposta.entity";
 
 
 @InputType()
-export class RamalParams extends PaginatedSearchParam {
+export class ProcessoParams extends PaginatedSearchParam {
     
-    @Field({ nullable: true})
-    nm_Inicial_Selecionada: string 
-
-    @Field({nullable: true})
-    cd_Origem: number
+      
 }
 

@@ -1,5 +1,6 @@
 import { HttpService, Injectable } from "@nestjs/common";
 import { Options } from "src/models/general/options.model";
+import { ProcessoParams } from "src/models/processos/processo.params";
 import { ApiGenericService } from "src/services/generic.service";
 
 @Injectable()
@@ -11,10 +12,10 @@ export class ProcessoRepository {
         private readonly apiService: ApiGenericService,
     ) { }
 
-    async Get_Processos() {
+    async Get_Processos(params: ProcessoParams) {
         try {
-            const response = await this.httpService.get(process.env.BASE_API_INTRANET + `v1/Processos`, this.options).toPromise()
 
+            const response = await this.httpService.get(process.env.BASE_API_INTRANET + `v1/Documentos/Processos`, this.options).toPromise()
             return response.data
 
         } catch (error) {
