@@ -21,4 +21,16 @@ export class GrupoceqService {
 
         return resposta.data;
     }
+
+    async Get_Menu_CEQ(){
+        let resposta = new Resposta<any>()
+
+        const response = await this.grupoceqFacade.Get_Menu_CEQ();
+
+        if(response.status)
+            resposta.data = response.data
+        else resposta = response
+
+        return resposta.data;
+    }
 }

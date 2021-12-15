@@ -7,4 +7,6 @@ export class DocumentosParams extends PaginatedSearchParam
     @Field({nullable : true})
     nm_Search: string
 
+    @Field ({nullable : true})
+    cd_Setor_CEQ: number
 }

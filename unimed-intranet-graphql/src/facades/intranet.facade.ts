@@ -45,4 +45,5 @@ export class IntranetFacade {
     Get_Departamentos = () => this.departamentoRepository.Get_Departamentos()
     Get_Download_Documento = (cd_Documento: number) => this.documentoRepository.Get_Download_Documento(cd_Documento)
     Get_Documento = (cd_Documento: number) => this.documentoRepository.Get_Documento(cd_Documento)
+    Get_Menu_CEQ = () => this.grupoceqRepository.Get_Menu_CEQ()
 }

@@ -8,9 +8,7 @@ export class GruposceqRepository {
 
     options: Options
 
-    constructor(private readonly httpService: HttpService,
-        private readonly apiService: ApiGenericService,
-    ) { }
+    constructor( private readonly httpService: HttpService, private readonly apiService: ApiGenericService ) { }
 
     async Get_Grupos_CEQ(params: GruposceqParams) {
         try {
@@ -19,6 +17,17 @@ export class GruposceqRepository {
             return response.data
         } catch (error) {
             return this.apiService.Tratar_Erro(error?.response);
+        }   
+    } 
+
+    async Get_Menu_CEQ(){
+        try{
+            const response = await this.httpService.get(process.env.BASE_API_INTRANET + `v1/Gruposceq/Menu`, this.options).toPromise()
+
+            return response.data
+        } catch (error) {
+            return this.apiService.Tratar_Erro(error?.response);
         }
-    }  //O RESPONSE FAZ UMA REQUISIÇÃO PRA API DO C# E ARMAZENA O QUE A API DEVOLVEU, NO CASO O RESULTADO DA QUERY
+
+    } //O RESPONSE FAZ UMA REQUISIÇÃO PRA API DO C# E ARMAZENA O QUE A API DEVOLVEU, NO CASO O RESULTADO DA QUERY
 }

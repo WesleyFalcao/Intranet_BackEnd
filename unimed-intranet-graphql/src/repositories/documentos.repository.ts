@@ -29,7 +29,6 @@ export class DocumentosRepository {
     }
 
     async Get_Download_Documento(cd_Documento: number) {
-
         try {
             const response = await this.httpService.get(process.env.BASE_API_INTRANET + `V1/Documentos/${cd_Documento}/Arquivo`, {
                 ...this.options,

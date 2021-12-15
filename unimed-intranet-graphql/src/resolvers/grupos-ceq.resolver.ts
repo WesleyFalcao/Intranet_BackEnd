@@ -19,4 +19,9 @@ export class GrupoceqResolver {
     {
         return this.gruposceqService.Get_Grupos_CEQ(objParam);
     }
+
+    @Query(returns => [Gruposceq],{nullable: true})
+    async menuceq(){
+        return this.gruposceqService.Get_Menu_CEQ();
+    }
 }
