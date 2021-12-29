@@ -21,10 +21,10 @@ export class DocumentosController {
 
             const response = await this.intranetFacade.Get_Download_Documento(jwtPayload.cd_Documento)
             const objarquivo = await this.intranetFacade.Get_Documento(jwtPayload.cd_Documento)
-        
+            console.log(objarquivo)
             res.set({
-                'Content-Type': Set_Mimetype(objarquivo.data.nm_Documento),
-                'Content-Disposition': `inline;filename=documento_${objarquivo.data.nm_Documento}`
+                'Content-Type': Set_Mimetype(objarquivo.data.nm_Arquivo),
+                'Content-Disposition': `inline;filename=documento_${objarquivo.data.nm_Arquivo}`
             });
 
             res.status(HttpStatus.OK).end(response);

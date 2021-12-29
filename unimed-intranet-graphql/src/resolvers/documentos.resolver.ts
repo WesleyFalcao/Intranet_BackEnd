@@ -1,5 +1,5 @@
 import { UseGuards } from "@nestjs/common";
-import { Args, Query, Resolver } from "@nestjs/graphql";
+import { Args, Query, Resolver, Resolver } from "@nestjs/graphql";
 import { Token } from "src/decorators/token.decorator";
 import { JwtAuthGuard } from "src/guards/jwt-auth.guard";
 import { Documento, RespostaDocumentos } from "src/models/documentos/documento.model";
@@ -8,8 +8,8 @@ import { TokenArquivo } from "src/models/documentos/token-arquivo.model";
 import { Fila, RespostaFilas } from "src/models/filas/fila.model";
 import { DocumentoService } from "src/services/documentos.service";
 
-//@UseGuards(JwtAuthGuard)
-@Resolver(of => Documento,)
+@UseGuards(JwtAuthGuard)
+@Resolver(of => Documento)
 export class DocumentoResolver {
 
     constructor(private documentoService: DocumentoService) { }
@@ -26,4 +26,5 @@ export class DocumentoResolver {
         return this.documentoService.Get_Token_Documento(cd_Documento, ds_Token)
     }
 }
+
 
