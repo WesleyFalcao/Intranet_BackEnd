@@ -1,5 +1,5 @@
 import { UseGuards } from "@nestjs/common";
-import { Args, Query, Resolver, Resolver } from "@nestjs/graphql";
+import { Args, Query, Resolver } from "@nestjs/graphql";
 import { Token } from "src/decorators/token.decorator";
 import { JwtAuthGuard } from "src/guards/jwt-auth.guard";
 import { Documento, RespostaDocumentos } from "src/models/documentos/documento.model";
