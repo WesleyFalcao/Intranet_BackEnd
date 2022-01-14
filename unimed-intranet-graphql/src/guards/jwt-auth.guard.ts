@@ -19,7 +19,7 @@ export class JwtAuthGuard implements CanActivate {
         try {
 
             // Verifica a cache
-            jwt.verify(req.headers.authorization.replace("Bearer ", ""), process.env.jwtSecret);
+            jwt.verify(req.headers.authorization?.replace("Bearer", ""), process.env.jwtSecret);
 
             // Seta o cabeçalho de autenticação
             this.intranetFacade.options.headers.Authorization = req.headers.authorization;

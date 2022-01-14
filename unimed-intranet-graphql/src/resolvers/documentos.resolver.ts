@@ -8,7 +8,7 @@ import { TokenArquivo } from "src/models/documentos/token-arquivo.model";
 import { Fila, RespostaFilas } from "src/models/filas/fila.model";
 import { DocumentoService } from "src/services/documentos.service";
 
-@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)
 @Resolver(of => Documento)
 export class DocumentoResolver {
 

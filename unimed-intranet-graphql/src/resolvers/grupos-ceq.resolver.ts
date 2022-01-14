@@ -8,7 +8,7 @@ import { GruposceqParams } from "src/models/gruposceq/grupo-ceq.params";
 import { Ramal } from "src/models/ramais/ramal.model";
 import { GrupoceqService } from "src/services/grupos_ceq.service";
 
-//@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)  verifica se está logado, ele desconmentado causou o erro de token inválido
 @Resolver(of => Gruposceq)
 export class GrupoceqResolver {
 

@@ -30,7 +30,7 @@ export class DocumentoService {
         
         let resposta = new Resposta<TokenArquivo>();
     
-        resposta.data = {ds_Token: this.tokenService.Encode_Login({cd_Documento}, ds_Token) }
+        resposta.data = {ds_Token: this.tokenService.Encode_Login({cd_Documento}, ds_Token)}
 
         return resposta.data;
     }
